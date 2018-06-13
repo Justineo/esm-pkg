@@ -1,6 +1,6 @@
 # esm-pkg
 
-Find all dependant modules with ESM support.
+> Find all dependent packages with an ESM output.
 
 This is typically used for the combination of webpack and babel-loader because webpack can recognize the ESM version of a package and we had to manually include those modules into babel-loader to get them transformed.
 

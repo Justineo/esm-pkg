@@ -1,7 +1,7 @@
 {
   "name": "esm-pkg",
   "version": "1.0.0",
-  "description": "Look for all dependant packages with an ESM output.",
+  "description": "Find all dependent packages with an ESM output.",
   "main": "index.js",
   "scripts": {
     "build": "babel src --out-dir lib",
