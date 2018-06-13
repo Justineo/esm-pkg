@@ -1,0 +1,10 @@
+.babelrc
+.editorconfig
+.eslintrc.js
+.gitignore
+.npmignore
+.travis.yml
+.DS_Store
+node_modules
+src
+test
