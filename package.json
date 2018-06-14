@@ -2,7 +2,7 @@
   "name": "esm-pkg",
   "version": "1.0.0",
   "description": "Find all dependent packages with an ESM output.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "babel src --out-dir lib",
     "test": "npm run build && ava",

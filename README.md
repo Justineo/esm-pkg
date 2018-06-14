@@ -6,6 +6,12 @@ This is typically used for the combination of webpack and babel-loader because w
 
 With esm-pkg, this can be easier and we don't have to manually add new packages to the `include` whitelist even the depedencies are updated with another package supporting ESM.
 
+## Usage
+
+```shell
+~ npm i -D esm-pkg
+```
+
 We can use esm-pkg in `webpack.config.js` like this:
 
 ```js
@@ -25,7 +31,7 @@ module.exports = {
         loader: 'babel-loader',
         include: [
           resolve('src'),
-          ...esmPkg.map(pkg => resolve(`node_modules/${pkg}`))
+          ...esmPkg(__dirname).map(pkg => resolve(`node_modules/${pkg}`))
         ]
       }
     ]
@@ -33,6 +39,20 @@ module.exports = {
 }
 ```
 
-# License
+## Options
+
+You can specify the second param as the option object:
+
+```js
+esmPkg(__dirname, {
+  moduleFields: ['module']
+})
+```
+
+* `moduleFields`
+
+  If the corresponding key is found in a package's `package.json` file, we'll assume it supports ESM output. Default value: `['module', 'jsnext:main']`.
+
+## License
 
 [MIT](./LICENSE).
