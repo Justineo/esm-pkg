@@ -10,9 +10,9 @@ function getLockData (cwd) {
     return null
   }
 
-  let lockFile = LOCK_FILES
-    .map(file => join(dir, file))
-    .find(file => existsSync(file))
+  let lockFile = LOCK_FILES.map(file => join(dir, file)).find(file =>
+    existsSync(file)
+  )
 
   if (!lockFile) {
     return null
@@ -22,7 +22,8 @@ function getLockData (cwd) {
 }
 
 const DEFAULT_OPTIONS = {
-  moduleFields: ['module', 'jsnext:main']
+  moduleFields: ['module', 'jsnext:main'],
+  dev: false
 }
 
 export default function (cwd, options = {}) {
@@ -37,7 +38,14 @@ export default function (cwd, options = {}) {
   }
   return Object.keys(lock.dependencies || {}).reduce((acc, name) => {
     let pkg = require(`${name}/package.json`)
-    let mod = (finalOptions.moduleFields || []).find(file => !!pkg[file])
+    let { moduleFields, dev } = finalOptions
+    let mod = (moduleFields || []).find(field => {
+      let hasModule = !!pkg[field]
+      if (typeof dev === 'boolean') {
+        return hasModule && dev
+      }
+      return hasModule
+    })
     if (mod) {
       acc.push(name)
     }

@@ -1,6 +1,6 @@
 {
   "name": "esm-pkg",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Find all dependent packages with an ESM output.",
   "main": "lib/index.js",
   "scripts": {

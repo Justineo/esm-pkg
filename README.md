@@ -49,9 +49,17 @@ esmPkg(__dirname, {
 })
 ```
 
-* `moduleFields`
+* `moduleFields`: `Array<string>`
 
-  If the corresponding key is found in a package's `package.json` file, we'll assume it supports ESM output. Default value: `['module', 'jsnext:main']`.
+  Default: `['module', 'jsnext:main']`
+
+  If the corresponding key is found in a package's `package.json` file, we'll assume it supports ESM output.
+
+* `dev`: `Boolean|null`
+
+  Default: `false`
+
+  By specifying a boolean value, we filter packages with the `dev` field to include/exclude `devDependencies`. `null` value means we accept both.
 
 ## License
 
